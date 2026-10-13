@@ -1,0 +1,335 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>معرض مشاريع صفحات تسجيل الدخول</title>
+  
+  <!-- خطوط Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- مكتبة الأيقونات Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-dark: #022b42;
+      --primary-blue: #006699;
+      --accent-blue: #e6f4ff;
+      --bg-color: #f4f7fa;
+      --card-bg: #ffffff;
+      --text-main: #1f2937;
+      --text-muted: #6b7280;
+      --border-color: #e5e7eb;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    /* رأس الصفحة */
+    header {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-blue) 100%);
+      color: white;
+      padding: 50px 20px 80px;
+      text-align: center;
+      position: relative;
+    }
+
+    .header-container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .back-btn {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #e0f2fe;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      padding: 8px 16px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 30px;
+      backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateX(3px);
+    }
+
+    .header-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .header-subtitle {
+      font-size: 1.05rem;
+      color: #e0f2fe;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* الحاوية الرئيسية */
+    main {
+      max-width: 1100px;
+      margin: -40px auto 0;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    /* شبكة عرض الكروت */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    /* كارت مشروع تسجيل الدخول */
+    .project-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border-color);
+      overflow: hidden;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.1);
+      border-color: var(--primary-blue);
+    }
+
+    /* مبيّن صورة/معاينة الكارت */
+    .card-preview {
+      height: 180px;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3rem;
+      position: relative;
+    }
+
+    .card-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      backdrop-filter: blur(4px);
+    }
+
+    /* محتوى الكارت */
+    .card-body {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+    }
+
+    .card-desc {
+      color: var(--text-muted);
+      font-size: 0.92rem;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    /* التاجز للتقنيات */
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .tag {
+      background-color: var(--accent-blue);
+      color: var(--primary-blue);
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 0.8rem;
+    }
+
+    /* أزرار الروابط */
+    .card-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--primary-blue);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary-dark);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-outline:hover {
+      background-color: #f3f4f6;
+      border-color: var(--primary-dark);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- هيدر الصفحة -->
+  <header>
+    <div class="header-container">
+      <a href="index.html" class="back-btn">
+        <i class="fa-solid fa-arrow-right"></i> الرئيسية
+      </a>
+      <h1 class="header-title">مشاريع صفحات تسجيل الدخول</h1>
+      <p class="header-subtitle">مجموعة من نماذج وشاشات تسجيل الدخول (Login & Sign Up) المصممة بتجارب أشكال عصرية ومتنوعة.</p>
+    </div>
+  </header>
+
+  <!-- شبكة المشاريع -->
+  <main>
+    <div class="projects-grid">
+
+      <!-- مشروع 1: تصميم بسيط وزجاجي (Glassmorphism) -->
+      <div class="project-card">
+        <div class="card-preview">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span class="badge">Glassmorphism</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">صفحة دخول زجاجية</h3>
+          <p class="card-desc">تصميم يعتمد على خلفية متموجة مع كارت شفاف بتأثير Glassmorphism العصري حقول الإدخال مجهزة بالتحقق الفوري.</p>
+          <div class="tags-container">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS3</span>
+            <span class="tag">Blur Effect</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://example.com/login1" target="_blank" class="btn btn-primary">
+              <i class="fa-solid fa-eye"></i> معاينة
+            </a>
+            <a href="https://github.com/username/glass-login" target="_blank" class="btn btn-outline">
+              <i class="fa-brands fa-github"></i> الكود
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- مشروع 2: صفحة دخول مع تبديل بين الدخول والتسجيل (Sliding Form) -->
+      <div class="project-card">
+        <div class="card-preview" style="background: linear-gradient(135deg, #022b42 0%, #006699 100%);">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          <span class="badge">Animated Form</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">دخول وانضمام تفاعلي</h3>
+          <p class="card-desc">تحتوي على نموذج مزدوج (تسجيل الدخول / إنشاء حساب) يتم التنقل بينهما بحركة انزلاقية سلسة باستخدام JavaScript.</p>
+          <div class="tags-container">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS Animation</span>
+            <span class="tag">JavaScript</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://example.com/login2" target="_blank" class="btn btn-primary">
+              <i class="fa-solid fa-eye"></i> معاينة
+            </a>
+            <a href="https://github.com/username/sliding-login" target="_blank" class="btn btn-outline">
+              <i class="fa-brands fa-github"></i> الكود
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- مشروع 3: تصميم مينيمال وداكن (Dark Mode Login) -->
+      <div class="project-card">
+        <div class="card-preview" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+          <i class="fa-solid fa-moon"></i>
+          <span class="badge">Dark Mode</span>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">صفحة دخول بالوضع الليلي</h3>
+          <p class="card-desc">واجهة هادئة ومريحة للعين تعتمد على الألوان الداكنة مع دعم الدخول بواسطة حسابات التواصل الاجتماعي (Social Login).</p>
+          <div class="tags-container">
+            <span class="tag">HTML5</span>
+            <span class="tag">CSS Grid</span>
+            <span class="tag">Social Icons</span>
+          </div>
+          <div class="card-actions">
+            <a href="https://example.com/login3" target="_blank" class="btn btn-primary">
+              <i class="fa-solid fa-eye"></i> معاينة
+            </a>
+            <a href="https://github.com/username/dark-login" target="_blank" class="btn btn-outline">
+              <i class="fa-brands fa-github"></i> الكود
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>
